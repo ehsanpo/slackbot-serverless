@@ -44,7 +44,7 @@ module.exports = async (req, res) => {
       } else {
         res.send({
           response_type: 'in_channel',
-          text: 'This lime is not yours to give!',
+          text: 'This 🍈 is not yours to give!',
         });
       }
 
