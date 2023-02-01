@@ -5,9 +5,9 @@ import { listAll } from "./slash_handlers/_list_all";
 import { getKey } from "./slash_handlers/_get_key";
 import { removeFromList } from "./slash_handlers/_remove_from_list";
 
-module.exports = (req, res) => {
-  console.log("req", req);
-  console.log("res", res);
+module.exports = async (req, res) => {
+  // console.log("req::::", req);
+  // console.log("res::::", res);
 
   const commandArray = tokenizeString(req.body.text);
   const action = commandArray[0];
@@ -19,15 +19,19 @@ module.exports = (req, res) => {
     case "get":
       getKey(res, commandArray);
       break;
-    case "list-set":
-      addToList(res, commandArray);
+    case "+1":
+      //get the key
+      let value = await getKey(res, commandArray, true);
+      //key plus 1
+      const NewCommandArray = ["set", commandArray[1], parseInt(value) + 1];
+      //save key
+      setKey(res, NewCommandArray);
       break;
+
     case "list-all":
       listAll(res, commandArray);
       break;
-    case "list-remove":
-      removeFromList(res, commandArray);
-      break;
+
     default:
       res.send({
         response_type: "ephemeral",
