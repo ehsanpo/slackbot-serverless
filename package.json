@@ -2,6 +2,7 @@
   "dependencies": {
     "axios": "^0.26.0",
     "crypto": "^1.0.1",
+    "redis": "^4.6.4",
     "vercel": "^24.0.0"
   }
 }
