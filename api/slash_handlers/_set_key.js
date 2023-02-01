@@ -5,7 +5,6 @@ export async function setKey(res, commandArray) {
   let key = commandArray[1];
   let value = commandArray[2];
 
-  console.log(req);
   await axios({
     url: `${redisURL}/set/${key}/${value}`,
     headers: {

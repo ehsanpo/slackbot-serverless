@@ -2,53 +2,10 @@ Remove the note part
 
 @plusOne
 
-
 /p1 +1 @ehsan
 /p1 -1 @ehsan
 /p1 list
 /p1 lime @ehsan
-
-
-
-
-
-# Note Taker Slack App/Bot
-
-This is a Slack Bot, using Vercel for serverless deployment and Upstash Redis for database.
-
-## Deploy This Project on Vercel!
-
-Simply fill the environmental variables defined below and your serverless functions will be up in seconds!
-
-<p align="center">
-<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fupstash%2Fvercel-note-taker-slackbot&env=UPSTASH_REDIS_REST_URL,UPSTASH_REDIS_REST_TOKEN,SLACK_SIGNING_SECRET,SLACK_BOT_TOKEN"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
-</p>
-
-## Docs
-
-- ### [What the Bot Does](#what-this-bot-does)
-- ### [Configuring Upstash](#configure-upstash)
-- ### [Configuring Slack Bot - 1](#configure-slack-bot-1)
-- ### [Deploying on Vercel](#deploy-on-vercel)
-- ### [Configuring Slack Bot - 2](#configure-slack-bot-2)
-
----
-
-### What The Bot Does
-
-<a id="what-this-bot-does"></a>
-
-- Events:
-  - New channel created:
-    - When a new is channel created, posts a message to `general` channel stating that such an event happened.
-  - Slackbot mentioned:
-    - Whenever the bot is mentioned, posts a
-      message to `general` channel stating
-      that the bot was mentioned.
-
-<p align="center">
-<img src="https://github.com/upstash/vercel-note-taker-slackbot/blob/main/public/events.png">
-</p>
 
 - Commands:
 _ `/note set <key> <value>` :

@@ -6,8 +6,7 @@ import { signingSecret } from "./_constants";
 
 module.exports = async (req, res) => {
   var type = req.body.type;
-  console.log("ehsan");
-  console.log(req.body);
+
   if (type === "url_verification") {
     await challenge(req, res);
   } else if (validateSlackRequest(req, signingSecret)) {
