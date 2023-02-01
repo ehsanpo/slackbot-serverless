@@ -1,10 +1,9 @@
 const axios = require("axios");
 import { redisURL, redisToken } from "../_constants";
 
-export async function setKey(res, req, commandArray) {
+export async function setKey(res, commandArray) {
   let key = commandArray[1];
   let value = commandArray[2];
-  let event = req.body.event;
 
   console.log(req);
   await axios({
