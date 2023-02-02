@@ -28,10 +28,27 @@ module.exports = async (req, res) => {
     case "-1":
       //get the key
       let value1 = await getKey(res, commandArray, true);
-      //key plus 1
+      //key minus 1
       const NewCommandArray1 = ["set", commandArray[1], parseInt(value1) - 1];
       //save key
       setKey(res, NewCommandArray1);
+      break;
+    case "lime":
+      // fetch lime
+      let NewCommandArray2 = ["get", "lime"];
+      let lime = await getKey(res, NewCommandArray2, true);
+
+      const sender = "@" + req.body.user_name;
+      const NewCommandArray3 = ["set", "lime", commandArray[1]];
+      if (sender === lime) {
+        setKey(res, NewCommandArray3);
+      } else {
+        res.send({
+          response_type: "in_channel",
+          text: "This 🍈 is not yours to give!",
+        });
+      }
+
       break;
 
     case "list-set":
