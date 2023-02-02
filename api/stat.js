@@ -4,13 +4,11 @@ import { addToList } from "./slash_handlers/_add_to_list";
 import { listAll } from "./slash_handlers/_list_all";
 import { getKey } from "./slash_handlers/_get_key";
 import { removeFromList } from "./slash_handlers/_remove_from_list";
-
+import { getAllKeys } from "./slash_handlers/_get_all_keys.js";
 module.exports = async (req, res) => {
-  // console.log("req::::", req);
-  // console.log("res::::", res);
-
   const commandArray = tokenizeString(req.body.text);
   const action = commandArray[0];
+  let username = req.body.user_name;
 
   switch (action) {
     case "set":
@@ -39,8 +37,8 @@ module.exports = async (req, res) => {
     case "list-set":
       addToList(res, commandArray);
       break;
-    case "list-all":
-      listAll(res, commandArray);
+    case "list":
+      getAllKeys(res, commandArray);
       break;
 
     default:
