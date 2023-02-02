@@ -17,6 +17,28 @@ let text = `
 | =======================|
 `;
 
+let avatar = {
+  "@reblof": ":rebecca:",
+  "@ehspou": ":ehsan:",
+  "@asgbje": ":asger:",
+  "@emma.skog": ":emma:",
+  "@marija.vujosevic": ":marija:",
+  "@jeegul": ":jeen:",
+};
+
+function convertXtoY(x) {
+  let y = [];
+  x.forEach((item) => {
+    const keys = Object.keys(item);
+    const values = Object.values(item);
+    y.push({
+      type: "mrkdwn",
+      text: ` ${avatar[keys[0]]}  *${values[0]}* \n`,
+    });
+  });
+  return y;
+}
+
 export async function getAllKeys(res, commandArray) {
   let url = (key) => `${redisURL}/get/${key}`;
 
@@ -47,15 +69,26 @@ export async function getAllKeys(res, commandArray) {
     let combinedArray = frontPplList.data.result.map((element, index) => ({
       [element]: list[index],
     }));
-    console.log(combinedArray);
 
     let replacedText = replaceKeyWithValue(text, combinedArray);
+    let fields = convertXtoY(combinedArray);
 
     res.send({
       response_type: "in_channel",
-      text: replacedText,
+      // text: replacedText
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "* CHANNEL STATS *",
+          },
+        },
+        {
+          type: "section",
+          fields: fields,
+        },
+      ],
     });
-
-    console.log(replaceKeyWithValue(text, combinedArray));
   });
 }
