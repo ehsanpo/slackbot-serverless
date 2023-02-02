@@ -1,108 +1,56 @@
-Remove the note part
+# Slack Points Bot (Serverless)
 
-@plusOne
+This bot helps you manage and distribute points to members of a Slack channel. It is built using serverless technology (Vercel Functions) and stores data using Upstash Redis.
 
-/p1 +1 @ehsan
-/p1 -1 @ehsan
+Features:
+
+- Add or subtract points from a user using simple commands
+- View a list of users and their respective points
+- Give users a unique reward (e.g. "lime")
+
+Usage:
+
+Add or subtract points:
+
+```
+/p1 +1 @username
+/p1 -1 @username
+
+```
+
+View the list of users and their points:
+
+```
 /p1 list
-/p1 lime @ehsan
 
-- Commands:
-_ `/note set <key> <value>` :
-_ Sets a key value pair.
-_ `/note get <key>` :
-_ Gets the value corresponding to the key
-_ `/note list-set <list_name> <item_as_string>` :
-_ Adds the `<item_as_string>` to `<list_name>` list as an item.
-_ `/note list-all <list_name>` :
-_ Lists all the items in the `<list_name>`
-_ `/note list-remove <list_name> <item_as_string>` :
-_ Removes `<item_as_string>` from the `<list_name>`
-<p align="center">
-<img src="https://github.com/upstash/vercel-note-taker-slackbot/blob/main/public/slash_commands.png">
-</p>
+```
 
-- P.S:
-  - All of the commands mentioned can be implemented as slackbot mentions rather than slash commands. For demonstration purposes, slash commands are also used. Use cases may differ.
+Give a unique reward:
 
----
+```
+/p1 lime @username
 
-### Configuring Upstash
+```
 
-<a id="configure-upstash"></a>
+Force change the point (for bugs and admin):
 
-1. Go to the [Upstash Console](https://console.upstash.com/) and create a new database
+```
+/p1 set @username 4
 
-   #### Upstash environment
+```
 
-   Find the variables in the database details page in Upstash Console:
-   `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`
+Note: The reward feature requires the user to have a "lime".
 
-   (These will be the env variables for vercel deployment)
+Limitations:
 
----
+- The list of front-end users (frontPpl) must be manually added.
 
-### Configuring Slack Bot - 1
+```
+/p1 list-set frontPpl @username
 
-<a id="configure-slack-bot-1"></a>
+```
 
-1. Go to [Slack API Apps Page](https://api.slack.com/apps):
-   - Create new App
-     - From Scratch
-     - Name your app & pick a workspace
-   - Go to Oauth & Permissions
-     - Add the following scopes
-       - app_mentions:read
-       - channels:read
-       - chat:write
-       - chat:write.public
-       - commands
-     - Install App to workspace
-       - Basic Information --> Install Your App --> Install To Workspace
-2. Note the variables (These will be the env variables for vercel deployment) :
-   - `SLACK_SIGNING_SECRET`:
-     - Go to Basic Information
-       - App Credentials --> Signing Secret
-   - `SLACK_BOT_TOKEN`:
-     - Go to OAuth & Permissions
-       - Bot User OAuth Token
+Todos:
 
----
-
-### Deploying on Vercel <a id="deploy-on-vercel"></a>
-
-1. Click the deploy button:
-
-<div style="text-align:center">
-<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fupstash%2Fvercel-note-taker-slackbot&env=UPSTASH_REDIS_REST_URL,UPSTASH_REDIS_REST_TOKEN,SLACK_SIGNING_SECRET,SLACK_BOT_TOKEN"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
-</div>
-
-2. Fill the environmental variables defined above.
-
----
-
-### Configuring Slack Bot - 2
-
-<a id="configure-slack-bot-2"></a>
-
-- After deployment, you can use the provided `vercel_domain`.
-
-1. Go to [Slack API Apps Page](https://api.slack.com/apps) and choose relevant app:
-
-   - Go to Slash Commands:
-     - Create New Command:
-       - Command : `note`
-       - Request URL : `<vercel_domain>/api/note`
-       - Configure the rest however you like.
-   - Go to Event Subscribtions:
-     - Enable Events:
-       - Request URL: `<vercel_domain>/api/events`
-     - Subscribe to bot events by adding:
-       - app_mention
-       - channel_created
-
-2. After these changes, Slack may require reinstalling of the app.
-
-### Additionally
-
-For additional explanations of the source code and how to run it locally, you can refer to [the blogpost](https://blog.upstash.com/vercel-note-taker-slackbot).
+- who got the lime?
+- Put in a “+1 for everyone except me”” command?

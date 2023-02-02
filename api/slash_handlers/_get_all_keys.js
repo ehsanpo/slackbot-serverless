@@ -12,8 +12,8 @@ function replaceKeyWithValue(text, combinedArray) {
 
 let text = `
 | =====CHANNEL STATS==== |
-| :rebecca: | :ehsan: | :asger: | :emma: | :marija: |  :jeen:  |
-|   @reblof  |   @ehspou   |   @asgbje    |   @emma.skog   |  @marija.vujosevic   |   @jeegul    |
+| :rebecca: | :ehsan: | :asger: | :emma:  | :marija: |  :jeen: |
+|   @reblof  |   @ehspou   |   @asgbje   |   @emma.skog   |   @marija.vujosevic   |   @jeegul   |
 | =======================|
 `;
 
