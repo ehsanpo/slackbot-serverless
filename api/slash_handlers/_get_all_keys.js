@@ -1,5 +1,6 @@
 const axios = require("axios");
 import { redisURL, redisToken } from "../_constants";
+import { getKey } from "./_get_key";
 
 function replaceKeyWithValue(text, combinedArray) {
   combinedArray.forEach((obj) => {
@@ -25,8 +26,9 @@ let avatar = {
   "@marija.vujosevic": ":marija:",
   "@jeegul": ":jeen:",
 };
+let limeCall = ["get", "lime"];
 
-function convertXtoY(x) {
+function convertXtoY(x, limeOwner) {
   let y = [];
   x.forEach((item) => {
     const keys = Object.keys(item);
@@ -35,6 +37,10 @@ function convertXtoY(x) {
       type: "mrkdwn",
       text: ` ${avatar[keys[0]]}  *${values[0]}* \n`,
     });
+  });
+  y.push({
+    type: "mrkdwn",
+    text: `${limeOwner} got the 🍈`,
   });
   return y;
 }
@@ -59,6 +65,7 @@ export async function getAllKeys(res, commandArray) {
       headers: headers,
     });
   });
+  let limeOwner = await getKey(res, limeCall, true);
 
   let list = [];
   Promise.all(p.map((promise) => promise)).then(function (values) {
@@ -71,7 +78,7 @@ export async function getAllKeys(res, commandArray) {
     }));
 
     let replacedText = replaceKeyWithValue(text, combinedArray);
-    let fields = convertXtoY(combinedArray);
+    let fields = convertXtoY(combinedArray, limeOwner);
 
     res.send({
       response_type: "in_channel",
@@ -81,7 +88,7 @@ export async function getAllKeys(res, commandArray) {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "* CHANNEL STATS *",
+            text: "*CHANNEL STATS*",
           },
         },
         {
