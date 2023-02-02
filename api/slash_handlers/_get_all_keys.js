@@ -24,13 +24,13 @@ export async function getAllKeys(res, commandArray) {
     Authorization: `Bearer ${redisToken}`,
   };
 
-  const xx = await axios({
-    url: `${redisURL}/LRANGE/allppl/0/${2 ** 32 - 1}`,
+  const frontPplList = await axios({
+    url: `${redisURL}/LRANGE/frontPpl/0/${2 ** 32 - 1}`,
     headers: headers,
   });
   let p = [];
 
-  xx.data.result.forEach((element, index) => {
+  frontPplList.data.result.forEach((element, index) => {
     // console.log("elm", element);
     p[index] = axios({
       url: url(element),
