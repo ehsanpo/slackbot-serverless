@@ -48,3 +48,10 @@ Force change the point (for bugs and admin):
 
 - who got the lime?
 - Put in a “+1 for everyone except me”” command?
+
+## Development
+
+- Use `vercel dev` to start it localy.
+- Use ngrok to make a tunnel to your localhost `ngrok http 3000`
+- Then update a slash command in Slack website and add your ngrok url plus `/api/stats` and a command you like!
+- When you done use `vercel deploy` and change to your production url in slash commands in slack website
