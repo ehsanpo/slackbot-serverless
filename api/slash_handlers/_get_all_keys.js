@@ -44,7 +44,7 @@ export async function getAllKeys(res, commandArray) {
       list.push(element.data.result);
     });
 
-    let combinedArray = xx.data.result.map((element, index) => ({
+    let combinedArray = frontPplList.data.result.map((element, index) => ({
       [element]: list[index],
     }));
     console.log(combinedArray);
