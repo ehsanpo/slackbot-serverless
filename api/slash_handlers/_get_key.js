@@ -13,8 +13,6 @@ export async function getKey(res, commandArray, callback) {
     .then((response) => {
       console.log("data from axios:", response.data);
       if (!!callback) {
-        xxx = response.data.result;
-        console.log(222, response.data.result);
         return response.data.result;
       } else {
         res.send({
@@ -31,8 +29,6 @@ export async function getKey(res, commandArray, callback) {
       });
     });
   if (!!callback) {
-    console.log("xxx", xxx);
-    console.log("ney_key", new_key);
     return new_key;
   }
 }

@@ -59,7 +59,6 @@ export async function getAllKeys(res, commandArray) {
   let p = [];
 
   frontPplList.data.result.forEach((element, index) => {
-    // console.log("elm", element);
     p[index] = axios({
       url: url(element),
       headers: headers,

@@ -1,7 +1,7 @@
 const axios = require("axios");
 import { redisURL, redisToken } from "../_constants";
 
-export async function setKey(res, commandArray) {
+export async function setKey(res, commandArray, skip = false) {
   let key = commandArray[1];
   let value = commandArray[2];
 
@@ -13,10 +13,12 @@ export async function setKey(res, commandArray) {
   })
     .then((response) => {
       console.log("data from axios:", response.data);
-      res.send({
-        response_type: "in_channel",
-        text: `Successfully set ${key}=${value}`,
-      });
+      if (!skip) {
+        res.send({
+          response_type: "in_channel",
+          text: `Successfully set ${key}=${value}`,
+        });
+      }
     })
     .catch((err) => {
       console.log("axios Error:", err);

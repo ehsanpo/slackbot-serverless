@@ -5,10 +5,14 @@ import { listAll } from "./slash_handlers/_list_all";
 import { getKey } from "./slash_handlers/_get_key";
 import { removeFromList } from "./slash_handlers/_remove_from_list";
 import { getAllKeys } from "./slash_handlers/_get_all_keys.js";
+import message from "./messages.json";
+
 module.exports = async (req, res) => {
   const commandArray = tokenizeString(req.body.text);
   const action = commandArray[0];
   let userName = req.body.user_name;
+  const sender = "@" + userName;
+  let limeCall = ["get", "lime"];
 
   switch (action) {
     case "set":
@@ -38,7 +42,6 @@ module.exports = async (req, res) => {
       let NewCommandArray2 = ["get", "lime"];
       let lime = await getKey(res, NewCommandArray2, true);
 
-      const sender = "@" + userName;
       const NewCommandArray3 = ["set", "lime", commandArray[1]];
       if (sender === lime) {
         setKey(res, NewCommandArray3);
@@ -52,24 +55,34 @@ module.exports = async (req, res) => {
       break;
 
     case "who-lime":
-      let limeCall = ["get", "lime"];
       let limeOwner = await getKey(res, limeCall, true);
-      // let people = await getAllKeys(res);
-      // if (people.includes(limeOwner)) {
-      //   res.send({
-      //     response_type: 'in_channel',
-      //     text: `{${limeOwner} has the 🍈!}`,
-      //   });
-      // } else {
-      //   res.send({
-      //     response_type: 'in_channel',
-      //     text: 'The 🍈 has gone missing!}',
-      //   });
-      // }
+      res.send({
+        response_type: "in_channel",
+        text: limeOwner + " is 🍈 Owner!",
+      });
+      break;
 
-      // console.log('----------------------------');
-      // console.log('PEOPLE', people);
-      console.log("LIME OWNER", limeOwner);
+    case "hack-lime":
+      let lime_Owner = await getKey(res, limeCall, true);
+
+      if (hacked() && !isWeekend()) {
+        // Change the lime owner
+        await setKey(res, ["set", "lime", sender], true);
+
+        res.send({
+          response_type: "in_channel",
+          text: sender + "✅ You are the new 🍈 owner!🫡 🎉",
+        });
+      } else {
+        // Remove 1 lime from the hacker if fails
+        let value = await getKey(res, ["get", sender], true);
+        await setKey(res, ["set", sender, parseInt(value) - 1], true);
+        res.send({
+          response_type: "in_channel",
+          text: "❌ You lost 1 point 🫣 " + getRandomHackingMessage(),
+        });
+      }
+
       break;
 
     case "list-set":
@@ -86,3 +99,24 @@ module.exports = async (req, res) => {
       });
   }
 };
+
+function hacked() {
+  return Math.random() > 0.8;
+  // return Math.random() < 0.5; 50% chance of true
+}
+
+function isWeekend() {
+  var today = new Date();
+  return today.getDay() == 6 || today.getDay() == 0;
+}
+
+function getRandomHackingMessage() {
+  // Load the JSON file
+  const hackingMessages = message.failedHackingAttempts;
+
+  // Get a random index from the array
+  const randomIndex = Math.floor(Math.random() * hackingMessages.length);
+
+  // Return the message at the random index
+  return hackingMessages[randomIndex].message;
+}
