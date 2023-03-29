@@ -1,80 +1,86 @@
+
 {
-    "failedHackingAttempts": [
-      {
-        "message": "Nice try, but my security is smarter than you."
-      },
-      {
-        "message": "Sorry, I only let professionals hack me."
-      },
-      {
-        "message": "I hope you're not using your real name, because you just failed big time."
-      },
-      {
-        "message": "A for effort, F for execution."
-      },
-      {
-        "message": "Your attempt at hacking was about as successful as a one-legged man in a butt-kicking contest."
-      },
-      {
-        "message": "I'm not even mad, I'm impressed at how bad you are."
-      },
-      {
-        "message": "If you were trying to impress me, you're going to have to try harder than that."
-      },
-      {
-        "message": "Don't quit your day job, unless your day job is hacking, in which case, definitely quit."
-      },
-      {
-        "message": "I'm beginning to think you don't know what you're doing."
-      },
-      {
-        "message": "Your hacking skills are about as effective as a chocolate teapot."
-      },
-      {
-        "message": "I'm not sure if you're trying to hack me or just randomly typing on your keyboard."
-      },
-      {
-        "message": "You have failed this hack."
-      },
-      {
-        "message": "You're like a bull in a china shop, but with hacking."
-      },
-      {
-        "message": "Congratulations, you just hacked yourself into a dead end."
-      },
-      {
-        "message": "Hacking isn't for everyone, and it's definitely not for you."
-      },
-      {
-        "message": "I'm starting to feel bad for you, and that's saying something."
-      },
-      {
-        "message": "Nice try, but you're not even close to getting through my security."
-      },
-      {
-        "message": "Are you sure you didn't accidentally hack a potato instead of my system?"
-      },
-      {
-        "message": "I don't know what's more broken, your hacking skills or my laughter after seeing your attempt."
-      },
-      {
-        "message": "It's okay, you can still learn to code...just maybe not how to hack."
-      },
-      {
-        "message": "Maybe you should stick to playing video games instead of hacking."
-      },
-      {
-        "message": "Have you considered taking up a different hobby, like knitting or stamp collecting?"
-      },
-      {
-        "message": "I think you might have more success trying to swim with a brick tied to your foot than hacking my system."
-      },
-      {
-        "message": "You know, hacking isn't the only way to get attention...have you tried stand-up comedy?"
-      },
-      {
-        "message": "If hacking doesn't work out, maybe you could become a professional mime instead."
-      }
-    ]
-  }
-  
+  "failedHackingAttempts": [
+    {
+      "message": "Nice try, but my security is smarter than you. 😉"
+    },
+    {
+      "message": "Sorry, I only let professionals hack Lime. 😏"
+    },
+    {
+      "message": "I hope you're not using your real name, because you just failed big time. 😬"
+    },
+    {
+      "message": "A for effort, F for execution. 🤦‍♂️"
+    },
+    {
+      "message": "Your attempt at hacking was about as successful as a one-legged man in a butt-kicking contest. 🤷‍♂️"
+    },
+    {
+      "message": "I'm not even mad, I'm impressed at how bad you are. 😂"
+    },
+    {
+      "message": "If you were trying to impress me, you're going to have to try harder than that. 😒"
+    },
+    {
+      "message": "Don't quit your day job, unless your day job is hacking, in which case, definitely quit. 🤭"
+    },
+    {
+      "message": "Your hacking skills are about as effective as a chocolate teapot. 🤣"
+    },
+    {
+      "message": "I'm not sure if you're trying to hack lime or just randomly typing on your keyboard. 🤔"
+    },
+    {
+      "message": "You're like a bull in a china shop, but with hacking. 🤦‍♂️"
+    },
+    {
+      "message": "Congratulations, you just hacked yourself into a dead end. 🤦‍♂️"
+    },
+    {
+      "message": "Hacking isn't for everyone, and it's definitely not for you. 😔"
+    },
+    {
+      "message": "I'm starting to feel bad for you, and that's saying something. 😞"
+    },
+    {
+      "message": "Nice try, but you're not even close to getting through my security. Do you even code bro? 🤨"
+    },
+    {
+      "message": "Are you sure you didn't accidentally hack a potato instead of my system? 🥔"
+    },
+    {
+      "message": "I don't know what's more broken, your hacking skills or my laughter after seeing your attempt. 🤣"
+    },
+    {
+      "message": "It's okay, you can still learn to code...just maybe not how to hack. 🤔"
+    },
+    {
+      "message": "Maybe you should stick to playing video games instead of hacking. 😝"
+    },
+    {
+      "message": "Have you considered taking up a different hobby, like knitting or stamp collecting? 🤔"
+    },
+    {
+      "message": "I think you might have more success trying to swim with a brick tied to your foot than hacking my system. 🤯"
+    },
+    {
+      "message": "You know, hacking isn't the only way to get attention...have you tried stand-up comedy? 🤣"
+    },
+    {
+      "message": "If hacking doesn't work out, maybe you could become a professional mime instead. 🤐"
+    },
+    {
+      "message": "Hacking failed.  Guess you need to tell Erfan you can't code after all. 🙁"
+    },
+    {
+      "message": "Hacking failed big time. You should have listened to your mother and become a lawyer. 🤦‍♂️"
+    },
+    {
+      "message": "I don't think you're cut out for hacking. Have you ever tried baking instead? 🥞"
+    },
+    {
+      "message": "I think joining the circus would be a better use of your time than hacking. 🤡"
+    }
+  ]
+}
