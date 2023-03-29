@@ -71,7 +71,7 @@ module.exports = async (req, res) => {
 
         res.send({
           response_type: "in_channel",
-          text: sender + "✅ You are the new 🍈 owner!🫡 🎉",
+          text: sender + " ✅ You are the new 🍈 owner!🫡 🎉",
         });
       } else {
         // Remove 1 lime from the hacker if fails
@@ -79,7 +79,7 @@ module.exports = async (req, res) => {
         await setKey(res, ["set", sender, parseInt(value) - 1], true);
         res.send({
           response_type: "in_channel",
-          text: "❌ You lost 1 point 🫣 " + getRandomHackingMessage(),
+          text: sender + " ❌ You lost 1 point 🫣 " + getRandomHackingMessage(),
         });
       }
 
