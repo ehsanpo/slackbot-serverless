@@ -21,6 +21,36 @@ module.exports = async (req, res) => {
     case "get":
       getKey(res, commandArray);
       break;
+    case "+1All":
+      //get all keys
+      let allKeys = await listAll(res, commandArray);
+      //loop through all keys
+      for (let i = 0; i < allKeys.length; i++) {
+        //get the key
+        let value = await getKey(res, ["get", allKeys[i]], true);
+        //key plus 1
+        const NewCommandArray = ["set", allKeys[i], parseInt(value) + 1];
+        //save key
+        setKey(res, NewCommandArray, true);
+        res.send({
+          response_type: "in_channel",
+          text: "YAAAY!! You get a point! :balloon: :tada: and you get a point! :party_parrot: everybody gets a point! :balloon: :tada:",
+        });
+      }
+      break;
+    case "-1All":
+      //get all keys
+      let allKeys1 = await listAll(res, commandArray);
+      //loop through all keys
+      for (let i = 0; i < allKeys1.length; i++) {
+        //get the key
+        let value = await getKey(res, ["get", allKeys1[i]], true);
+        //key minus 1
+        const NewCommandArray = ["set", allKeys1[i], parseInt(value) - 1];
+        //save key
+        setKey(res, NewCommandArray, true);
+      }
+      break;
     case "+1":
       //get the key
       let value = await getKey(res, commandArray, true);
@@ -71,7 +101,9 @@ module.exports = async (req, res) => {
 
         res.send({
           response_type: "in_channel",
-          text: sender + " ✅ You are the new 🍈 owner!🫡 🎉",
+          text:
+            sender +
+            " :powerup: You are the new 🍈 owner!🫡 🎉 :mario_luigi_dance: ",
         });
       } else {
         // Remove 1 lime from the hacker if fails
@@ -101,7 +133,7 @@ module.exports = async (req, res) => {
 };
 
 function hacked() {
-  return Math.random() > 0.8;
+  return Math.random() > 0.7;
   // return Math.random() < 0.5; 50% chance of true
 }
 
