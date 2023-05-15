@@ -37,7 +37,7 @@ function convertXtoY(x, limeOwner) {
     const values = Object.values(item);
     y.push({
       type: "mrkdwn",
-      text: ` ${avatar[keys[0]]}  *${values[0]}* \n`,
+      text: ` ${avatar[keys[0]]}: *${values[0]}* \n`,
     });
   });
   y.push({
