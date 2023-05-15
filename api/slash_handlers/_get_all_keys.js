@@ -25,6 +25,8 @@ let avatar = {
   "@emma.skog": ":emma:",
   "@marija.vujosevic": ":marija:",
   "@jeegul": ":jeen:",
+  "@nicten": ":nicko:",
+  "@cargus": ":cargus:",
 };
 let limeCall = ["get", "lime"];
 
