@@ -1,5 +1,7 @@
 # Slack Points Bot (Serverless)
 
+![Screenshot 2023-07-18 at 13 01 21](https://github.com/ehsanpo/slackbot-serverless/assets/2206592/81ff52ae-a266-45af-ab52-50dfc88658fd)
+
 This bot helps you manage and distribute points to members of a Slack channel. It is built using serverless technology (Vercel Functions) and stores data using Upstash Redis.
 
 ## Features:
