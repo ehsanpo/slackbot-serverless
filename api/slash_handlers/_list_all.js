@@ -1,7 +1,7 @@
 const axios = require("axios");
 import { redisURL, redisToken } from "../_constants";
 
-export async function listAll(res, commandArray) {
+export async function listAll(res, commandArray, ignore = false) {
   let listName = commandArray[1];
 
   await axios({
@@ -18,6 +18,10 @@ export async function listAll(res, commandArray) {
       response.data.result.forEach((element, index) => {
         text += index + 1 + ". " + element + "\n";
       });
+
+      if (ignore) {
+        return response.data.result;
+      }
 
       res.send({
         response_type: "in_channel",

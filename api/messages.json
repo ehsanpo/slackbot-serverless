@@ -1,5 +1,24 @@
-
 {
+  "giveaway": [
+    {
+      "message": "Alert, 🚨 alert! 🚨 We've got another tech wizard just sprinkled some magic! donated 1 point to our point system! 📷 Let's drop some :partyparrot: for our generous comrade! Now, can someone lend me a broom? I need to sweep up ☝️ all this pixie dust!"
+    },
+    {
+      "message": "Whoa! Another point in our treasure chest! Tech wizards charging ahead 🙎🏻 with generosity. Let's rev up the cheer! 📣📣 ☕️ 💖 🎉"
+    },
+    {
+      "message": "In 😳 our epic saga of ones and zeros, another star illuminates! They generously dropped a point in! Let's celebrate 🎉🎊 with a standing ovation! 🌟 🕺"
+    },
+    {
+      "message": "Oh snap! Another 🔄 point has entered the chat! This is becoming a points extravaganza, folks! Let the fun continue. 💥🎉"
+    },
+    {
+      "message": "ATTENTION 📢 Another grand point joins the party!  🎊 This feat deserves a drum roll! Followed by celebration, no loops attached.🥳 🎵"
+    },
+    {
+      "message": "Hot diggity dog! 🌭 Another precious point bagged! Can we get a thunderous applause going around? How about a virtual high five? 🙌 Team, you rock! ⚡"
+    }
+  ],
   "failedHackingAttempts": [
     {
       "message": "Nice try, but my security is smarter than you. 😉"
@@ -15,7 +34,7 @@
     },
     {
       "message": " :whack: leave my lime alone"
-    }, 
+    },
     {
       "message": "Your attempt at hacking was about as successful as a one-legged man in a butt-kicking contest. 🤷‍♂️"
     },

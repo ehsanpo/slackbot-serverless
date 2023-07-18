@@ -7,6 +7,9 @@ import { removeFromList } from "./slash_handlers/_remove_from_list";
 import { getAllKeys } from "./slash_handlers/_get_all_keys.js";
 import message from "./messages.json";
 
+import { redisURL, redisToken } from "./_constants";
+const axios = require("axios");
+
 module.exports = async (req, res) => {
   const commandArray = tokenizeString(req.body.text);
   const action = commandArray[0];
@@ -84,6 +87,38 @@ module.exports = async (req, res) => {
 
       break;
 
+    case "share":
+      let headers = {
+        Authorization: `Bearer ${redisToken}`,
+      };
+
+      const frontPplList = await axios({
+        url: `${redisURL}/LRANGE/frontPpl/0/${2 ** 32 - 1}`,
+        headers: headers,
+      });
+
+      let p = removeElement(frontPplList.data.result, "@" + userName);
+      let random = Math.floor(Math.random() * p.length);
+
+      let Xvalue = await getKey(res, ["get", p[random]], true);
+
+      // key plus 1
+      const NewCommandArrayX = ["set", p[random], parseInt(Xvalue) + 1];
+      // save key
+      setKey(res, NewCommandArrayX, true);
+      res.send({
+        response_type: "in_channel",
+        text:
+          "YAAAY!! :confetti_ball: @" +
+          userName +
+          " just give 1 point to charity and  " +
+          p[random] +
+          " got it! " +
+          getRandomHackingMessage("giveaway"),
+      });
+
+      break;
+
     case "who-lime":
       let limeOwner = await getKey(res, limeCall, true);
       res.send({
@@ -111,7 +146,10 @@ module.exports = async (req, res) => {
         await setKey(res, ["set", sender, parseInt(value) - 1], true);
         res.send({
           response_type: "in_channel",
-          text: sender + " ❌ You lost 1 point 🫣 " + getRandomHackingMessage(),
+          text:
+            sender +
+            " ❌ You lost 1 point 🫣 " +
+            getRandomHackingMessage("failedHackingAttempts"),
         });
       }
 
@@ -142,13 +180,21 @@ function isWeekend() {
   return today.getDay() == 6 || today.getDay() == 0;
 }
 
-function getRandomHackingMessage() {
+function getRandomHackingMessage(get) {
   // Load the JSON file
-  const hackingMessages = message.failedHackingAttempts;
+  const hackingMessages = message[get];
 
   // Get a random index from the array
   const randomIndex = Math.floor(Math.random() * hackingMessages.length);
 
   // Return the message at the random index
   return hackingMessages[randomIndex].message;
+}
+function removeElement(array, element) {
+  const index = array.indexOf(element);
+
+  if (index !== -1) {
+    array.splice(index, 1);
+  }
+  return array;
 }
